@@ -6,7 +6,7 @@ linesf1 = []  # readed from file opisanie
 linesf2 = []  # readed from file input
 
 lists = []  # edited list of inputs
-f1 = open("opisanie.txt")
+f1 = open("description.txt")
 f2 = open("input.txt")
 
 a = "name: "
@@ -20,7 +20,7 @@ linesf2 = [line.rstrip() for line in linesf2]  # deletes '\n'
 linesf2 = [line.split(' ') for line in linesf2]
 for x in linesf2:
     if x[0] != '':  # to avoid RE caused by '' lines
-        xf = [int(i) for i in x]
+        xf = [i for i in x]
         lists.append(xf)
 
 # parsing executable file name, number of inputs, number of outputs
@@ -35,7 +35,7 @@ for i in lists:
     inputs.append(i[0:len(i) - number_of_outputs])
     outputs.append(i[number_of_inputs:])
 
-path_to_exe = 'C:/2pythonproj/dsaAssignment/build/exe.win-amd64-3.6/' + name_exe
+path_to_exe = 'C:/Users/whst1/Documents/GitHub/itp/build/exe.win32-3.6/' + name_exe
 for i in range(len(lists)):
     outputs_runtime = []
 
@@ -57,7 +57,7 @@ for i in range(len(lists)):
     process.wait(timeout=0.2)
 
     for j in range(number_of_outputs):
-        if outputs[i][j] == int(outputs_runtime[j]): #neponyatno kak sravnivat esli ne int
+        if outputs[i][j] == outputs_runtime[j]: #neponyatno kak sravnivat esli ne int
             number_of_ok += 1
 
 print(" tested file:", name_exe + "\n",
